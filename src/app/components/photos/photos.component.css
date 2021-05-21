@@ -1,0 +1,55 @@
+.add-container{
+  width: 70%;
+  margin-top: 20px;
+}
+
+.mybutton{
+  background-color: crimson;
+  color: rgb(248, 246, 250);
+}
+  
+  img{
+    width: 300px;
+    height: 300px;
+    float: right;
+    margin-left: 220px;
+  }
+
+  .info-block {
+    display: flex;
+  }
+  
+.description{
+  margin: 90px 90px 90px 30px;
+}
+
+  .create-block {
+    padding: 24px;
+    border-radius: 5px;
+    margin-bottom: 24px;
+    border: 1px solid rgb(10, 10, 10);
+    background-color: rgb(92, 7, 7);
+    color: blanchedalmond;
+  }
+  .required{
+    color:darkorange;
+  }
+  .status {
+    padding: 8px;
+    background: #055505;
+    color: white;
+    margin-top: 8px;
+    border: 1px solid rgb(231, 235, 20);
+    border-radius: 5px;
+  }
+
+  .photo-card {
+  display: flex;
+  flex-direction: row;
+  width: 80%;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: rgb(3, 3, 3);
+    color:whitesmoke;
+    border-radius: 10px;
+  }

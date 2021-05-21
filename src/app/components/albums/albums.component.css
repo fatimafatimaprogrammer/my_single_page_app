@@ -1,0 +1,31 @@
+.myalbum{
+  background-color: darkred;
+}
+
+h3 {
+    margin-top: 5%;
+    margin-bottom: 5%;
+    text-align: center;
+    color: rgb(248, 246, 246);
+    font-size: 30px; 
+  }
+  
+  .frame{
+    margin-bottom: 3%;
+    background-color: rgba(226, 177, 17, 0.925);
+    border-radius: 5px;
+    padding: 10px;
+  }
+
+
+  .button_style {
+    background-color: #070707; 
+    border: none;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 25px; 
+    padding: 30px; 
+    margin: 10px;
+  }

@@ -1,0 +1,125 @@
+
+<div *ngIf="!showEditPhotoForm && showCreatePhotoForm === true " class="container add-container">
+    <div class="create-block">
+      <div>
+        <h3>Add your Photo:</h3>
+      </div>
+      <form [formGroup]="photoForm" (submit)="addPhoto($event, photoForm); onSubmit()">
+        <div class="form-group row">
+          <label class="col-sm-3" for="title">Title:</label>
+          <input
+            class="col-sm-9"
+            type="text"
+            placeholder="Enter title"
+            id="title"
+            formControlName="title"
+            [ngClass]="{ 'is-invalid': addForm.title.errors }"
+          />
+          <div *ngIf="addForm.title.errors" class="invalid-feedback">
+            <div *ngIf="addForm.title.errors.required">Title is required here !!!</div>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-sm-3" for="url">Url:</label>
+          <input
+            class="col-sm-9"
+            type="url"
+            placeholder="Enter url of the photo"
+            id="url"
+            formControlName="url"
+            [ngClass]="{'is-invalid': addForm.url.errors }"
+          />
+          <div *ngIf="addForm.url.errors" class="invalid-feedback">
+            <div *ngIf="addForm.url.errors.required">URL is required here !!!.</div>
+            <div *ngIf="addForm.url.errors.pattern">Please enter valid url !!!.</div>
+        </div>
+        </div>
+        <button class="btn btn-primary" type="submit" [disabled]="!photoForm.valid"> Add photo</button>
+      </form>
+  
+      <div class="status" *ngIf="photoAdded">Photo added sucessfully!!!.</div>
+    </div>
+  </div>
+  
+  <div *ngIf="photoData">
+    <button style="margin: 20px" routerLink="/" class="mybutton">Go back</button>
+    <button style="margin: 20px; float:right" class="mybutton" (click)="showCreateForm()"> Add Photo</button>
+    <h3 class="text-center">Photos</h3>
+    <div class="container" *ngFor="let data of photoData">
+      <div class="photo-card" *ngIf="!showEditPhotoForm">
+        <div class="description">
+          <h4>Title: {{ data.title }}</h4>
+          <button
+            style="margin: 4px"
+            class="btn btn-primary"
+            (click)="editPhoto($event, data)"
+          >
+            <i class="fas fa-edit"></i> Edit Photo
+          </button>
+          <button
+            style="margin: 4px"
+            class="btn btn-danger"
+            (click)="deletePhoto($event, data)"
+          >
+            <i class="fas fa-trash"></i> Delete Photo
+          </button>
+          <div>
+            <div class="status" *ngIf="photoDeleted && data.id === photoDeletedId">
+              Photo Deleted Sucessfully.
+            </div>
+          </div>
+        </div>
+        <div>
+          <img src="{{ data.url }}" class="img-fluid" />
+        </div>
+      </div>
+    </div>
+  
+    <div class="container" *ngIf="showEditPhotoForm">
+      <div class="create-block">
+        <div>
+          <h3>Edit Photo:</h3>
+        </div>
+        <form [formGroup]="editPhotoForm" (submit)="editPhotoData($event, editPhotoForm); onSubmit()">
+          <div class="form-group row">
+            <label class="col-sm-3" for="title">Title:</label>
+            <input
+              class="col-sm-9"
+              type="text"
+              placeholder="Enter title"
+              id="title"
+              formControlName="title"
+              required
+              [ngClass]="{ 'is-invalid':editForm.title.errors }"
+              />
+              <div *ngIf="editForm.title.errors" class="invalid-feedback">
+                <div *ngIf="editForm.title.errors.required">Title is required</div>
+              </div>
+            </div>
+          <div class="form-group row">
+            <label class="col-sm-3" for="url">Url:</label>
+
+            <input
+              class="col-sm-9"
+              type="url"
+              placeholder="Enter url of the photo"
+              id="url"
+              formControlName="url"
+              [ngClass]="{'is-invalid': editForm.url.errors }"
+            />
+            <div *ngIf="editForm.url.errors" class="invalid-feedback">
+              <div *ngIf="editForm.url.errors.required">URL is required.</div>
+              <div *ngIf="editForm.url.errors.pattern">Please enter valid url.</div>
+            </div>
+  
+  
+          </div>
+  
+          <button class="btn btn-primary" type="submit" [disabled]="!editPhotoForm.valid">Edit Photo</button>
+        </form>
+  
+        <div class="status" *ngIf="photoEdited">Photo Edited Sucessfully.</div>
+      </div>
+    </div>
+  </div>
+  
